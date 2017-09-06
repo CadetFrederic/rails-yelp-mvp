@@ -1,0 +1,45 @@
+<div class="text-center">
+  <div class="container">
+
+  <h1 id = "name">
+    <%= @restaurant.name %>
+  </h1>
+
+  <div class="card card-info">
+    <p>
+      <strong>Address:</strong>
+      <%= @restaurant.address %>
+    </p>
+
+    <p>
+      <strong>Phone number:</strong>
+      <%= @restaurant.phone_number %>
+    </p>
+
+    <p>
+      <strong>Category:</strong>
+      <%= @restaurant.category %>
+    </p>
+
+  <%= link_to 'Add a review', new_restaurant_review_path(@restaurant), class: "btn-add" %>
+  </div>
+
+   <% @reviews.each do |review| %>
+      <div class="col-xs-12 col-sm-4">
+          <div class="card card-review">
+          <div class="card-body">
+            <p><%= review.content %></p>
+            <p><%review.rating.times do %>
+                &#9733
+                <% end%>
+            </p>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  </div>
+  <%= link_to 'Edit', edit_restaurant_path(@restaurant), class: "btn-add-restaurant" %>
+  <%= link_to 'Back', restaurants_path, class: "btn-add-restaurant" %>
+</div>
+
+
